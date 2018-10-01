@@ -14,11 +14,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var titulos = ["Sirenita", "Frozen", "Moana", "Rey Leon", "Jorobado de Notre Dame"]
     var duration = ["100 min", "120 min", "90 min", "110 min", "120 min"]
     var year = ["1989", "2015", "1992", "1996", "2000"]
-    var imagenes = [UIImage(named:"art-deco-disney-posters-8"),
-    UIImage(named:"art-deco-disney-posters-1"),
-    UIImage(named:"3b19b275f91da3b18b1d8f78ce9b00a3"),
-    UIImage(named:"art-deco-disney-posters-5"),
-    UIImage(named:"art-deco-disney-posters-1")]
+    var image = [UIImage(named:"mermaid"),
+    UIImage(named:"frozen"),
+    UIImage(named:"moana"),
+    UIImage(named:"lion"),
+    UIImage(named:"notre")]
     
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var tabla: UITableView!
@@ -44,28 +44,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return titulos.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! Movie
-        //cell.lblNumber.text = String[indexPath.row + 1]
-        cell.imgMovie.image = imagenes[indexPath.row]
-        cell.lblTitulo.text = titulos[indexPath.row]
-        cell.lblAño.text = year[indexPath.row]
-        cell.lblDuracion.text = duration[indexPath.row]
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "custom") //as! Movie
+        //cell.lblNumber.text = indice[indexPath.row + 1]
+        //cell.imageCount?.image = image[indexPath.row]
+        //cell.lblTitulo?.text = titulos[indexPath.row]
+        //cell.lYear?.text = year[indexPath.row]
+        //cell.lDuration?.text = duration[indexPath.row]
+        return cell!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        topImage.image = imagenes[indexPath.row]
+        topImage.image = image[indexPath.row]
     }
 
 
 
 class Movie:UITableViewCell{
     
-    @IBOutlet weak var lblNumber: UILabel!
-    @IBOutlet weak var lblTitulo: UILabel!
-    @IBOutlet weak var lblAño: UILabel!
-    @IBOutlet weak var lblDuracion: UILabel!
-    @IBOutlet weak var imgMovie: UIImageView!
+    
+  
+    
     
 }
 }
