@@ -8,17 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Movie:UITableViewCell{
+    
+    @IBOutlet weak var imageCont: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var duration: UILabel!
+    @IBOutlet weak var year: UILabel!
+    
+}
 
+
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     var titulos = ["Sirenita", "Frozen", "Moana", "Rey Leon", "Jorobado de Notre Dame"]
-    var duration = ["100 min", "120 min", "90 min", "110 min", "120 min"]
-    var year = ["1989", "2015", "1992", "1996", "2000"]
-    var image = [UIImage(named:"mermaid"),
-    UIImage(named:"frozen"),
-    UIImage(named:"moana"),
-    UIImage(named:"lion"),
-    UIImage(named:"notre")]
+    var duration1 = ["100 min", "120 min", "90 min", "110 min", "120 min"]
+    var year1 = ["1989", "2015", "1992", "1996", "2000"]
+    var image1 = [UIImage(named:"mermaid"),
+                  UIImage(named:"frozen"),
+                  UIImage(named:"moana"),
+                  UIImage(named:"lion"),
+                  UIImage(named:"notre")]
+    
+
+    
     
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var tabla: UITableView!
@@ -44,26 +58,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return titulos.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "custom") //as! Movie
-        //cell.lblNumber.text = indice[indexPath.row + 1]
-        //cell.imageCount?.image = image[indexPath.row]
-        //cell.lblTitulo?.text = titulos[indexPath.row]
-        //cell.lYear?.text = year[indexPath.row]
-        //cell.lDuration?.text = duration[indexPath.row]
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "custom", for: indexPath) as! Movie
+       
+        cell.imageCont?.image = image1[indexPath.row]
+        cell.title?.text = titulos[indexPath.row]
+        cell.year?.text = year1[indexPath.row]
+        cell.duration?.text = duration1[indexPath.row]
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        topImage.image = image[indexPath.row]
+        topImage.image = image1[indexPath.row]
     }
 
 
 
-class Movie:UITableViewCell{
-    
-    
-  
-    
-    
-}
 }
